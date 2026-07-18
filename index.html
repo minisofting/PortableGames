@@ -2,55 +2,159 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Мой Игровой Портал</title>
+    <title>⚡ ИГРОВОЙ ПОРТАЛ АРТЕМИЯ ⚡</title>
     <style>
+        /* Стиль заднего фона в духе старого веба */
         body {
-            background-color: #1a1a1a;
+            background-color: #110022;
+            background-image: radial-gradient(#ff0077 1px, transparent 1px), radial-gradient(#00ffff 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
             color: #ffffff;
-            font-family: sans-serif;
+            font-family: "Impact", "Arial Black", sans-serif;
             text-align: center;
-            padding-top: 50px;
+            padding: 40px 20px;
+            margin: 0;
         }
-        h1 { color: #ffcc00; }
+
+        /* Огромный жирный мультяшный заголовок с обводкой */
+        h1 {
+            font-size: 48px;
+            color: #ff9900;
+            text-transform: uppercase;
+            text-shadow: 
+                -3px -3px 0 #000,  
+                 3px -3px 0 #000,
+                -3px  3px 0 #000,
+                 3px  3px 0 #000,
+                 6px  6px 0 #ff0055;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+        }
+
+        /* Контейнер для кнопок-карточек */
         .game-grid {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
         }
+
+        /* ЭКСТРЕМАЛЬНЫЙ СКЕВОМОРФИЗМ: Глянцевая крутая кнопка */
         .game-card {
-            background: #2a2a2a;
-            border: 3px solid #ffcc00;
-            border-radius: 10px;
-            padding: 20px;
-            width: 200px;
+            display: block;
+            position: relative;
+            background: linear-gradient(to bottom, #00ccff 0%, #0044cc 100%);
+            border: 4px solid #000000;
+            border-radius: 20px;
+            padding: 25px;
+            width: 240px;
             text-decoration: none;
             color: white;
-            font-weight: bold;
-            transition: 0.2s;
+            box-shadow: 
+                inset 0 8px 0 rgba(255, 255, 255, 0.6), /* Верхний глянец */
+                inset 0 -8px 0 rgba(0, 0, 0, 0.3),       /* Нижняя тень */
+                0 10px 0 #002266,                        /* Толстый 3D бортик */
+                0 15px 20px rgba(0, 0, 0, 0.7);          /* Тень на пол */
+            transition: all 0.1s ease;
+            cursor: pointer;
+            overflow: hidden;
         }
+
+        /* Стеклянный блик на пол-кнопки в стиле 2007 года */
+        .game-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 50%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
+            border-radius: 16px 16px 0 0;
+            pointer-events: none;
+        }
+
+        /* Вторая кнопка (оранжевая в стиле Nickelodeon) */
+        .game-card.nickelodeon {
+            background: linear-gradient(to bottom, #ff9900 0%, #ff5500 100%);
+            box-shadow: 
+                inset 0 8px 0 rgba(255, 255, 255, 0.6),
+                inset 0 -8px 0 rgba(0, 0, 0, 0.3),
+                0 10px 0 #992200,
+                0 15px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Эффект физического нажатия на кнопку */
         .game-card:hover {
-            transform: scale(1.05);
-            background: #3a3a3a;
+            transform: translateY(2px);
+            box-shadow: 
+                inset 0 6px 0 rgba(255, 255, 255, 0.6),
+                inset 0 -8px 0 rgba(0, 0, 0, 0.3),
+                0 8px 0 #002266,
+                0 12px 15px rgba(0, 0, 0, 0.7);
+        }
+        
+        .game-card.nickelodeon:hover {
+            box-shadow: 
+                inset 0 6px 0 rgba(255, 255, 255, 0.6),
+                inset 0 -8px 0 rgba(0, 0, 0, 0.3),
+                0 8px 0 #992200,
+                0 12px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .game-card:active {
+            transform: translateY(10px); /* Кнопка уходит вниз при клике */
+            box-shadow: 
+                inset 0 4px 0 rgba(255, 255, 255, 0.4),
+                inset 0 -4px 0 rgba(0, 0, 0, 0.2),
+                0 0px 0 #002266,
+                0 5px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Текст внутри карточек */
+        .game-title {
+            font-size: 24px;
+            margin: 10px 0;
+            text-shadow: 2px 2px 0 #000;
+            text-transform: uppercase;
+        }
+
+        .game-status {
+            display: inline-block;
+            background: #000000;
+            color: #00ff00;
+            padding: 5px 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: monospace;
+            border: 2px solid #00ff00;
+            margin-top: 10px;
+        }
+
+        .game-status.wip {
+            color: #ffcc00;
+            border-color: #ffcc00;
         }
     </style>
 </head>
 <body>
 
-    <h1>Простой сайт, выбери игру в которую будешь играть</h1>
+    <h1>ВЫБЕРИ ИГРУ</h1>
     
     <div class="game-grid">
-        <!-- Кнопка для Джетпака из GDevelop -->
+        
+        <!-- Первая кнопка: Синий глянец для Джетпака -->
         <a href="./jetpack/index.html" class="game-card">
-            <p>Artemiu's Jetpack</p>
-            <span>🕹️ Играть</span>
+            <div class="game-title">Artemiu's Jetpack</div>
+            <div class="game-status">ИГРАТЬ</div>
         </a>
 
-        <!-- Кнопка для будущего Платформера из GameMaker -->
-        <a href="./platformer/index.html" class="game-card">
-            <p>Kakish Tower: Rekakish</p>
-            <span>🎮 Скоро!</span>
+        <!-- Вторая кнопка: Слизнево-оранжевый Nickelodeon для будущего платформера -->
+        <a href="./platformer/index.html" class="game-card nickelodeon">
+            <div class="game-title">Мульт-Платформер</div>
+            <div class="game-status wip">В РАЗРАБОТКЕ️</div>
         </a>
+
     </div>
 
 </body>
